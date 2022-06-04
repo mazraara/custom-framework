@@ -1,19 +1,16 @@
 <?php
 
+use App\Controllers\PagesController;
 use Symfony\Component\Routing\Route;
 use Symfony\Component\Routing\RouteCollection;
 
 $routes = new RouteCollection();
 
-$routes->add('hello', new Route('/hello/{name}', ['name' => 'World']));
-$routes->add('bye', new Route('/bye'));
-
 $routes->add(
-    'homepage',
-    new Route(
-        '/{page}',
-        ['controller' => 'HomeController', 'method' => 'index', 'page' => 1]
-    )
+    'home',
+    new Route('/home', [
+        '_controller' => PagesController::class . '::home',
+        'title' => 'home',
+    ])
 );
-
 return $routes;
