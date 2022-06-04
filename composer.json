@@ -1,18 +1,32 @@
 {
     "name": "mazraara/custom-framework",
     "description": "Custom framework",
-    "autoload": {
-        "psr-4": {
-            "APP\\": "app/"
-        }
-    },
     "require": {
-        "symfony/routing": "^6.2",
-        "symfony/http-foundation": "^6.2",
-        "ext-curl": "*",
-        "ext-pdo": "*"
+        "php": "^8.1",
+        "symfony/routing": "^6.1",
+        "symfony/http-foundation": "^6.1",
+        "twig/twig": "^3.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "^9"
+        "phpunit/phpunit": "^9",
+        "squizlabs/php_codesniffer": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "App\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "start": [
+            "php -S localhost:8000 -t ./public"
+        ],
+        "stop": [
+            "killall -9 php"
+        ]
     }
 }
