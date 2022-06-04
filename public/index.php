@@ -2,14 +2,18 @@
 
 declare(strict_types=1);
 
-use Symfony\Component\HttpFoundation\Request;
-
 error_reporting(E_ALL);
-
-$request = Request::createFromGlobals();
 
 require __DIR__ . '/../vendor/autoload.php';
 
-$app = require __DIR__ . '/../bootstrap/app.php';
+use Symfony\Component\HttpFoundation\Request;
 
-$app->run($request);
+$request = Request::createFromGlobals();
+$container = include __DIR__ . '/../container.php';
+
+//$app = require __DIR__ . '/../bootstrap/app.php';
+
+$response = $container->get('custom_app')->handle($request);
+$response->send();
+
+//$app->handle($request)->send();
