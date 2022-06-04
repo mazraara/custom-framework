@@ -15,5 +15,8 @@ Run unit tests:
 - Run: `docker-compose exec php /bin/bash`
 - Run: `php bin/phpunit tests`
 
+Run the app in development server:
+- Run: `composer start`
+
 PMA:
 - http://localhost:8080
